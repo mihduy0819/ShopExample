@@ -3,9 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Model
 {
-    [Table("Footer")]
+    [Table("Footers")]
     public class Footer
     {
+        [Key]
         public string ID { get; set; }
 
         [Required]
