@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data.Infrastructure
 {
-    class IDbFactory
+    public interface IDbFactory:IDisposable
     {
+        ShopExampleDbContext Init();
     }
 }

@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace Data.Infrastructure
 {
-    class DbFactory
+    public class DbFactory : Disposable, IDbFactory
     {
+        ShopExampleDbContext dbContext;
+        public ShopExampleDbContext Init()
+        {
+            return dbContext ?? (dbContext = new ShopExampleDbContext());
+        }
+        protected override void DisposeCore()
+        {
+            if (dbContext != null)
+                dbContext.Dispose();
+        }
     }
 }

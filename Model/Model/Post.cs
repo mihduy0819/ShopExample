@@ -32,7 +32,7 @@ namespace Model.Model
         public bool? HomeFlag { get; set; }
         public bool? HotFlag { get; set; }
         public int? Viewcount { get; set; }
-        [ForeignKey("CategiryID")]
-        public virtual PostCategory PosCategory { get; set; }
+        [ForeignKey("CategoryID")]
+        public virtual PostCategory PostCategory { get; set; }
     }
 }

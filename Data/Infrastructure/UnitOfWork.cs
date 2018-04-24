@@ -10,17 +10,18 @@ namespace Data.Infrastructure
     {
         private readonly IDbFactory dbFactory;
         private ShopExampleDbContext dbContext;
-        public UnitOfWork( IDbFactory dbFactory)
+        public UnitOfWork(IDbFactory dbFactory)
         {
             this.dbFactory = dbFactory;
         }
         public ShopExampleDbContext DbContext
         {
-            get { return dbContext ?? (dbContext = dbFactory.Init());}
+            get { return dbContext ?? (dbContext = dbFactory.Init()); }
         }
 
         public void Commit()
         {
-            dbContext.sa
+            dbContext.SaveChanges();
         }
     }
+}
