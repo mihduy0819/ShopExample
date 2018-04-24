@@ -23,6 +23,7 @@ namespace Model.Model
         [MaxLength(256)]
         public string Alias { get; set; }
         [Required]
+        [MaxLength(256)]
         public string Description { get; set; }
         public int? ParentID { get; set; }
         public int? DisplayOrder { get; set; }

@@ -15,7 +15,7 @@ namespace Model.Model
         public int PostID { get; set; }
         [Key]
         [Column(TypeName ="varchar")]
-        [MaxLength(256)]
+        [MaxLength(50)]
         public string TagID { get; set; }
         [ForeignKey("PostID")]
         public virtual Post Post { get; set; }
