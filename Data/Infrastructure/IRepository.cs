@@ -15,7 +15,7 @@ namespace Data.Infrastructure
 
         //Xoa 1 thuoc tinh
         void Delete(T entity);
-
+        void Delete(int id);
         //Xoa nhieu thuoc tinh
         void DeleteMulti(Expression<Func<T, bool>> where);
 
