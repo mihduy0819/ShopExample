@@ -39,22 +39,22 @@ namespace Service
 
         public IEnumerable<PostCategory> GetAll()
         {
-            _postCategoryRepository.GetAll();
+            return _postCategoryRepository.GetAll();
         }
 
         public IEnumerable<PostCategory> GetAllByParentId(int parentId)
         {
-            throw new NotImplementedException();
+            return _postCategoryRepository.GetMulti(x => x.Status && x.ParentID == parentId);
         }
 
         public PostCategory GetByID(int id)
         {
-            throw new NotImplementedException();
+            return _postCategoryRepository.GetSingleById(id);
         }
 
         public void Update(PostCategory postCategory)
         {
-            throw new NotImplementedException();
+             _postCategoryRepository.Update(postCategory);
         }
     }
 }
