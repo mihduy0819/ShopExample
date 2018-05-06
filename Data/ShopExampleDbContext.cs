@@ -1,19 +1,15 @@
 ﻿using Model.Model;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data
 {
-    public class ShopExampleDbContext: DbContext
+    public class ShopExampleDbContext : DbContext
     {
         public ShopExampleDbContext() : base("ShopExampleConnection")
         {
             this.Configuration.LazyLoadingEnabled = false;
         }
+
         public DbSet<Footer> Footers { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<MenuGroup> MenuGroups { get; set; }
@@ -30,11 +26,12 @@ namespace Data
         public DbSet<SupportOnline> SupportOnlines { get; set; }
         public DbSet<SystemConfig> SystemConfigs { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Error> Errors { get; set; }
         public DbSet<VisitorStatistic> VisitorStatistics { get; set; }
         /*Tạo phương thức gi đè của DbContext*/
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-           
         }
     }
 }
