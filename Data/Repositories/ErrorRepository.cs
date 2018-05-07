@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Data.Infrastructure;
+using Model.Model;
 
 namespace Data.Repositories
 {
-    class ErrorRepository
+    public interface IErrorRepository
     {
+        Error Add(Error error);
+    }
+    public class ErrorRepository : RepositoryBase<Error>, IErrorRepository
+    {
+        public ErrorRepository(IDbFactory dbFactory): base(dbFactory)
+        {
+
+        }
     }
 }

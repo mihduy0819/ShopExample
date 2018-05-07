@@ -10,6 +10,7 @@ using WebSite.Infractructure.Core;
 
 namespace WebSite.Api
 {
+    [RoutePrefix("api/postcategory")]
     public class PostCategoryController : ApiControllerBase
     {
         IPostCategoryService _postCategoryService;
@@ -17,21 +18,13 @@ namespace WebSite.Api
         {
             this._postCategoryService = postCategoryService;
         }
-       
-        public HttpResponseMessage Get(HttpRequestMessage request, PostCategory postCategory)
+       [Route("getall")]
+        public HttpResponseMessage Get(HttpRequestMessage request)
         {
             return CreateHttpResponse(request, () =>
             {
-                HttpResponseMessage response = null;
-                if (ModelState.IsValid)
-                {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    var listCategory= _postCategoryService.Add(postCategory);
-                    response = request.CreateErrorResponse(HttpStatusCode.OK, lis);
-                }
+                var listCategory= _postCategoryService.GetAll();
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCategory);
                 return response;
             });
         }
