@@ -1,11 +1,9 @@
 ﻿using Model.Model;
 using Service;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -15,11 +13,13 @@ namespace WebSite.Infractructure.Core
     public class ApiControllerBase : ApiController
     {
         private IErrorService _errorService;
+
         public ApiControllerBase(IErrorService errorService)
         {
             this._errorService = errorService;
         }
-       protected HttpResponseMessage CreateHttpResponse(HttpRequestMessage requestMessage, Func<HttpResponseMessage> function)
+
+        protected HttpResponseMessage CreateHttpResponse(HttpRequestMessage requestMessage, Func<HttpResponseMessage> function)
         {
             HttpResponseMessage response = null;
             try
@@ -51,6 +51,7 @@ namespace WebSite.Infractructure.Core
             }
             return response;
         }
+
         private void LogError(Exception ex)
         {
             try
@@ -62,8 +63,8 @@ namespace WebSite.Infractructure.Core
                 _errorService.Create(error);
                 _errorService.Save();
             }
-            catch 
-            {   
+            catch
+            {
             }
         }
     }

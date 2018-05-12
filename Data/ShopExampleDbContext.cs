@@ -1,9 +1,10 @@
-﻿using Model.Model;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Model.Model;
 using System.Data.Entity;
 
 namespace Data
 {
-    public class ShopExampleDbContext : DbContext
+    public class ShopExampleDbContext : IdentityDbContext<ApplicationUser>
     {
         public ShopExampleDbContext() : base("ShopExampleConnection")
         {
@@ -30,8 +31,14 @@ namespace Data
         public DbSet<VisitorStatistic> VisitorStatistics { get; set; }
         /*Tạo phương thức gi đè của DbContext*/
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        public static ShopExampleDbContext Create()
         {
+            return new ShopExampleDbContext();
+        }
+        protected override void OnModelCreating(DbModelBuilder builder)
+        {
+            builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+            builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
         }
     }
 }
